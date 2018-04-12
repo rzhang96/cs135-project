@@ -14,10 +14,11 @@ CREATE TABLE User{
 
 CREATE TABLE Reservation{
 	room_id INT UNSIGNED NOT NULL,
+	-- Make the student_id's
+	roomates
 	occupants VARCHAR (256) NOT NULL,
 	building_id INT UNSIGNED NOT NULL,
 	time_stamp INT UNSIGNED NOT NULL,
-	FOREIGN KEY (occupants) REFERENCES User(roommate)
 }
 
 CREATE TABLE Room{
@@ -28,6 +29,30 @@ CREATE TABLE Room{
 }
 
 CREATE TABLE Building{
-	building_id INT UNSIGNED NOT NULL PRIMARY KEY
-	name VARCHAR(256) NOT NULL,
+	building_id INT UNSIGNED NOT NULL PRIMARY KEY,
+	name VARCHAR(256) NOT NULL
 }
+
+INSERT INTO Building (01, Wohlford)
+INSERT INTO Building (02, Boswell)
+INSERT INTO Building (03, Green)
+INSERT INTO Building (04, Appleby)
+
+INSERT INTO Room (101, 01, 2)
+INSERT INTO Room (102, 01, 2)
+INSERT INTO Room (103, 01, 2)
+INSERT INTO Room (104, 01, 2)
+INSERT INTO Room (105, 01, 2)
+INSERT INTO Room (106, 01, 2)
+INSERT INTO Room (107, 01, 2)
+INSERT INTO Room (108, 01, 2)
+INSERT INTO Room (109, 01, 2)
+INSERT INTO Room (110, 01, 2)
+INSERT INTO Room (111, 01, 2)
+INSERT INTO Room (112, 01, 2)
+INSERT INTO Room (113, 01, 2)
+INSERT INTO Room (114, 01, 2)
+INSERT INTO Room (115, 01, 2)
+INSERT INTO Room (116, 01, 2)
+
+
