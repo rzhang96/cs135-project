@@ -16,9 +16,9 @@
 </head>
 
 <body>
-
-<h2>Waiting Room</h2>
 <center>
+<h2>Waiting Room</h2>
+
 	<div>
 		Your given time slot is: Monday April 5, 7:00PM - 7:30PM  <br/>
 		It is currently not your time to register.				  <br/>
@@ -26,11 +26,14 @@
 		<p id="date"> </p>
 		<script> n =  new Date();
 			y = n.getFullYear();
-			m = n.getMonth() + 1;
+			var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+			m = months[n.getMonth()];
 			d = n.getDate();
-			document.getElementById("date").innerHTML = n.toDateString();  
+			h = n.getHours();
+			min = n.getMinutes();
+			s = n.getSeconds();
+			document.getElementById("date").innerHTML = m + " " + d + ", " + h + ":" + min + ":" + s;  
 		</script>					  
-
 
 
 
