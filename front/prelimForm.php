@@ -1,9 +1,13 @@
-<!-- <!DOCTYPE html> -->
-
 <?
 require('../cs135-project/backend/queries.php');
+require('../cs135-project/backend/dbconn.php');
+$conn = connect_to_db("DRAW");
+session_start();
 
 ?>
+
+<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
