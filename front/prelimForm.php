@@ -7,6 +7,23 @@ session_start();
 ?>
 
 <!DOCTYPE html>
+<!-- need to write teh getTime document -->
+$student_id, $name, $room_preference, $timeslot, $class
+<?
+  if (isset($_POST["Submit"])){
+    $student_id = $_POST["studentID"];
+    $name = $_POST["name"];
+    $room_preference = $_POST["roomType"];
+    $class = $_POST["classYear"];
+    mysqli_stmt_execut($uSelect);
+    $uSelect -> bind_result($uName);
+    if($uSelect -> fetch()){
+// checks to see if the user is has already been created
+      echo "Welcome back! ".$uName "<br>"
+    }
+  }
+
+?>
 
 <html lang="en">
 
@@ -31,12 +48,16 @@ session_start();
   <legend for="studentID">Student ID Number:
   <input type="text" name="studentID" id ="studentID" value="" onblur = "studentIDVal()" required> </legend>
 
+  <legend for="name">First and Last Name:
+  <input type="text" name="name" id ="name" value="" onblur = "name()" required> </legend>
+
   <legend for="classYear">Class Year:
   <select required>
       <option value="2019">2019</option>
       <option value="2020">2020</option>
       <option value="2021">2021</option>
   </select> 
+  <input type = "number" name = "classYear" id = "classYear" value = "">
   </legend> 
 
   <legend for="roomType">Preferred Room Type:
@@ -45,13 +66,14 @@ session_start();
       <option value="double">Double</option>
       <option value="triple">Triple</option>
   </select> 
+  <input type = "text" name = "roomType" id = "roomType" value = "">
   </legend> 
 
   <legend for="roommateID">Roommate's ID Number (If Applicable):
-  <input type="text" name="roommateID" id ="roommateID" value="" onblur = "studentIDVal()" required> </legend>
+  <input type="number" name="roommateID" id ="roommateID" value="" onblur = "studentIDVal()" required> </legend>
 
 
-<input type ='Submit' value = 'Submit' name = 'Submit'> </input>
+<input type ='Submit' value = 'Submit' name = 'Submit' > </input>
 
 </body>
 </html>
