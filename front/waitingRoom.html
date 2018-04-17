@@ -1,0 +1,49 @@
+<!-- <!DOCTYPE html> -->
+
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <link rel="stylesheet" type="text/css" href="roomDraw.css">
+
+
+<title>Waiting Room</title>
+</head>
+
+<body>
+<center>
+<h2>Waiting Room</h2>
+
+	<div>
+		Your given time slot is: Monday April 5, 7:00PM - 7:30PM  <br/>
+		It is currently not your time to register.				  <br/>
+		Current Time: 
+		<p id="date"> </p>
+		<script> n =  new Date();
+			y = n.getFullYear();
+			var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+			m = months[n.getMonth()];
+			d = n.getDate();
+			h = n.getHours();
+			min = n.getMinutes();
+			s = n.getSeconds();
+			document.getElementById("date").innerHTML = m + " " + d + ", " + h + ":" + min + ":" + s;  
+		</script>					  
+
+
+
+		<br/>
+ 
+		You will be redirected to the room draw page when it is time to select a room. <br/>
+ 
+		If you have a roommate, only one of you needs to select a room. <br/>
+	</div>
+</center>
+
+</body>
+</html>
