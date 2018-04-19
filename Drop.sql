@@ -4,16 +4,30 @@ CREATE DATABASE DRAW;
 
 USE DRAW;
 
-CREATE TABLE User{
+CREATE TABLE User(
 	student_id INT UNSIGNED NOT NULL PRIMARY KEY,
 	name VARCHAR(256) NOT NULL,
 	room_preference VARCHAR(256) NOT NULL,
 	-- Need to assign timeslot as the user submits their form
 	timeslot INT UNSIGNED NOT NULL,
 	class VARCHAR(256) NOT NULL
-}
+);
 
-CREATE TABLE Reservation{
+
+CREATE TABLE Building{
+	building_id INT UNSIGNED NOT NULL PRIMARY KEY,
+	name VARCHAR(256) NOT NULL
+);
+
+
+CREATE TABLE Room(
+	room_id INT UNSIGNED NOT NULL PRIMARY KEY,
+	building_id INT UNSIGNED NOT NULL,
+	capacity INT UNSIGNED NOT NULL,
+	FOREIGN KEY (building_id) REFERENCES Building(building_id)
+);
+
+CREATE TABLE Reservation(
 	res_id INT UNSIGNED NOT NULL AUTO INCREMENT PRIMARY KEY,
 	room_id INT UNSIGNED NOT NULL,
 	-- Make the student_id's
@@ -25,19 +39,7 @@ CREATE TABLE Reservation{
 	FOREIGN KEY (owner) REFERENCES User (student_id),
 	FOREIGN KEY(room_id) REFERENCES Room(room_id),
 	FOREIGN KEY (building_id) REFERENCES Building(building_id)
-}
-
-CREATE TABLE Room{
-	room_id INT UNSIGNED NOT NULL PRIMARY KEY,
-	building_id INT UNSIGNED NOT NULL,
-	capacity INT UNSIGNED NOT NULL,
-	FOREIGN KEY (building_id) REFERENCES Building(building_id)
-}
-
-CREATE TABLE Building{
-	building_id INT UNSIGNED NOT NULL PRIMARY KEY,
-	name VARCHAR(256) NOT NULL
-}
+);
 
 INSERT INTO Building (01, Wohlford)
 INSERT INTO Building (02, Boswell)
