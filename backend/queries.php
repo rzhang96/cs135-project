@@ -8,13 +8,13 @@ $query = "SELECT name from User where student_id=?";
 $uSelect = $conn->prepare ($query);
 $uSelect->bind_param("id", $student_id);
 
-$query = "INSERT INTO Reservation (room_id, building_id, time_stamp) Values (?,?,?,?)";
+$query = "INSERT INTO Reservation (room_id, building_id, time_stamp) Values (?,?,?)";
 $resInsert = $conn->prepare($query);
 $resInsert->bind_param("iiii", $room_id, $owner, $building_id, $time_stamp);
 
 $query = "INSERT INTO Reservation (owner) Values (?)";
 $resInsert = $conn->prepare($query);
-// $resInsert->bin_param("") HOW TO INSERT ARRAY FOR USER?? salloum will help
+// $resInsert->bin_param("") HOW TO INSER T ARRAY FOR USER?? salloum will help
 
 $query = "SELECT id from Reservation where owner=?";
 $resSelect = $conn->prepare ($query);
