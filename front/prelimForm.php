@@ -61,7 +61,7 @@ session_start();
       <option value="2020">2020</option>
       <option value="2021">2021</option>
   </select> 
-  <input type = "number" name = "classYear" id = "classYear" value = "">
+  
   </legend> 
 
   <legend for="roomType">Preferred Room Type:
@@ -70,7 +70,6 @@ session_start();
       <option value="double">Double</option>
       <option value="triple">Triple</option>
   </select> 
-  <input type = "text" name = "roomType" id = "roomType" value = "">
   </legend> 
 
   <legend for="roommateID">Roommate's ID Number (If Applicable):
