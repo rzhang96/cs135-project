@@ -1,6 +1,6 @@
 <?
-require('../cs135-project/backend/queries.php');
-require('../cs135-project/backend/dbconn.php');
+require('../backend/queries.php');
+require('../backend/dbconn.php');
 $conn = connect_to_db("DRAW");
 session_start();
 
@@ -8,19 +8,23 @@ session_start();
 
 <!DOCTYPE html>
 <!-- need to write teh getTime document -->
-$student_id, $name, $room_preference, $timeslot, $class
 <?
   if (isset($_POST["Submit"])){
     $student_id = $_POST["studentID"];
     $name = $_POST["name"];
     $room_preference = $_POST["roomType"];
     $class = $_POST["classYear"];
-    mysqli_stmt_execut($uSelect);
+    mysqli_stmt_execute($uSelect);
     $uSelect -> bind_result($uName);
     if($uSelect -> fetch()){
 // checks to see if the user is has already been created
       echo "Welcome back! ".$uName "<br>"
+    }else{
+      $timeslot = mt_rand(9,15).":".str_pad(mt_rand(0,59), 2, "0", STR_PAD_LEFT);
+      mysqli_stmt_execute($uInsert);
     }
+    mysqli_stmt_close($uSelect);
+    msqli_stmt_close($uInsert);
   }
 
 ?>
