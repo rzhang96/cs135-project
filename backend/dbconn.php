@@ -4,7 +4,7 @@ function connect_to_db( $dbname ){
 
 	// Usage: host, login, pass, db name
 	// Change the host, login, and db information as appropriate
-	$dbc = @mysqli_connect( "localhost", "root", "", $dbname ) or
+	$dbc = @mysqli_connect( "localhost", "root", "root", $dbname ) or
 			die( "Connect failed: ". mysqli_connect_error() );
 	return $dbc;
 }

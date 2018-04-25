@@ -1,30 +1,36 @@
-<?
-require('../backend/queries.php');
+<?php
 require('../backend/dbconn.php');
 $conn = connect_to_db("DRAW");
+require('../backend/queries.php');
 session_start();
-
 ?>
 
 <!DOCTYPE html>
 <!-- need to write teh getTime document -->
-<?
+<?php
+
   if (isset($_POST["Submit"])){
     $student_id = $_POST["studentID"];
     $name = $_POST["name"];
-    $room_preference = $_POST["roomType"];
+    $room_preference = $_POST["room_Type"];
     $class = $_POST["classYear"];
+
+    echo "**** $student_id $name $room_preference $class";
     mysqli_stmt_execute($uSelect);
-    $uSelect -> bind_result($uName);
+    $uSelect -> bind_result($uName); // not used 
     if($uSelect -> fetch()){
 // checks to see if the user is has already been created
-      echo "Welcome back! ".$uName "<br>"
+      echo "Welcome back! ".$name ."<br>";
     }else{
       $timeslot = mt_rand(9,15).":".str_pad(mt_rand(0,59), 2, "0", STR_PAD_LEFT);
+      echo "Timeslot: $timeslot";
       mysqli_stmt_execute($uInsert);
+      print_r($conn->error);
+      echo "Thanks for registering! ". $name . "<br>";
+
     }
     mysqli_stmt_close($uSelect);
-    msqli_stmt_close($uInsert);
+    mysqli_stmt_close($uInsert);
   }
 
 ?>
@@ -56,16 +62,15 @@ session_start();
   <input type="text" name="name" id ="name" value="" onblur = "name()" required> </legend>
 
   <legend for="classYear">Class Year:
-  <select required>
+  <select name="classYear" required>
       <option value="2019">2019</option>
       <option value="2020">2020</option>
       <option value="2021">2021</option>
   </select> 
-  
   </legend> 
 
   <legend for="roomType">Preferred Room Type:
-  <select>
+  <select name="room_Type">
       <option value="single">Single</option>
       <option value="double">Double</option>
       <option value="triple">Triple</option>
@@ -76,7 +81,7 @@ session_start();
   <input type="number" name="roommateID" id ="roommateID" value="" onblur = "studentIDVal()" required> </legend>
 
 
-<input type ='Submit' value = 'Submit' name = 'Submit' > </input>
+  <input type='submit' value= 'Submit' name= 'Submit' > 
 
 </body>
 </html>
