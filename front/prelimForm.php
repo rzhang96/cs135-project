@@ -15,6 +15,10 @@ session_start();
     $room_preference = $_POST["room_Type"];
     $class = $_POST["classYear"];
 
+    $cookie_name = "user";
+    $cookie_value = $student_id;
+    setcookie($cookie_name, $cookie_value);
+
     echo "**** $student_id $name $room_preference $class";
     mysqli_stmt_execute($uSelect);
     $uSelect -> bind_result($uName); // not used 
@@ -80,8 +84,18 @@ session_start();
   <legend for="roommateID">Roommate's ID Number (If Applicable):
   <input type="number" name="roommateID" id ="roommateID" value="" onblur = "studentIDVal()" required> </legend>
 
+  <a href ='roomSelect.html'>
+    <input type='submit' value= 'Submit' name= 'Submit'> 
+  </a>
 
-  <input type='submit' value= 'Submit' name= 'Submit' > 
+</form>
+  <script type = "text/javascript">
+     $(document).ready(function(){
+        $("#roomSelect").click(function() {
+          $("body").load("roomSelect.html");
+        });
+     });
+  </script>
 
 </body>
 </html>
