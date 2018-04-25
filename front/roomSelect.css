@@ -18,7 +18,21 @@ li a:hover {
     background-color: #98012E;
     color: white;
 }
-.active {
+li.active > a{
     background-color: #98012E;
     color: white;
+}
+.container {
+    width: 80%;
+    background: aqua;
+    margin: 0;
+}
+.one {
+    width: 15%;
+    background: #f1f1f1;
+    float: left;
+}
+.two {
+    margin-left: 15%;
+    background: #efefef;
 }
