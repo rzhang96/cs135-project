@@ -9,7 +9,7 @@ var validateField = function(fieldElem, infoMessage, validateFn) {
 	formStatus.removeClass();
 
 	if (fieldElem.is(':focus')) {
-		formStatus.text("ok");
+		// formStatus.text("ok");
 		formStatus.addClass("info");
 		return;
 	}
