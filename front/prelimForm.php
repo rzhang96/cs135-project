@@ -57,7 +57,7 @@ session_start();
 <h2> Room Draw Preliminary Information</h2>
 
 <fieldset>
-<form name="frmRegister" method="post">
+<form name="frmRegister" method="post" action = "roomSelect.php">
 
   <legend for="studentID">Student ID Number:
   <input type="text" name="studentID" id ="studentID" value="" onblur = "studentIDVal()" required> </legend>
