@@ -37,20 +37,20 @@ CREATE TABLE Reservation(
 	FOREIGN KEY (room_id) REFERENCES Room(room_id),
 	FOREIGN KEY (building_id) REFERENCES Building(building_id)
 );
+INSERT INTO Building VALUES (01, "Wohlford");
 
-
-INSERT INTO Building VALUES (01, "Wohlford1");
-INSERT INTO Building VALUES (02, "Wohlford2");
-INSERT INTO Building VALUES (03, "Wohlford3");
-INSERT INTO Building VALUES (04, "Wohlford4");
-INSERT INTO Building VALUES (05, "Wohlford5");
-INSERT INTO Building VALUES (06, "Wohlford6");
-INSERT INTO Building VALUES (07, "Wohlford7");
-INSERT INTO Building VALUES (08, "Wohlford8");
-INSERT INTO Building VALUES (09, "Wohlford9");
-INSERT INTO Building VALUES (10, "Wohlford10");
-INSERT INTO Building VALUES (11, "Wohlford11");
-INSERT INTO Building VALUES (12, "Wohlford12");
+INSERT INTO Room VALUES (01, "01", 01);
+INSERT INTO Room VALUES (02, "02", 01);
+INSERT INTO Room VALUES (03, "03", 01);
+INSERT INTO Room VALUES (04, "04", 01);
+INSERT INTO Room VALUES (05, "05", 01);
+INSERT INTO Room VALUES (06, "06", 01);
+INSERT INTO Room VALUES (07, "07", 01);
+INSERT INTO Room VALUES (08, "08", 01);
+INSERT INTO Room VALUES (09, "09", 01);
+INSERT INTO Room VALUES (10, "10", 01);
+INSERT INTO Room VALUES (11, "11", 01);
+INSERT INTO Room VALUES (12, "12", 01);
 
 
 

@@ -1,4 +1,30 @@
-<!-- <!DOCTYPE html> -->
+<?php
+require('../backend/dbconn.php');
+$conn = connect_to_db("DRAW");
+require('../backend/queries.php');
+session_start();
+?>
+
+<!DOCTYPE html>
+
+ $room_id, $owner, $building_id, $time_stamp
+<?php
+
+  if (isset($_POST["Submit"])){
+    $room_id = $_POST["roomID"];
+    $building_id = $_POST["01"];
+
+    if (!isset($_COOKIE[$cookie_name])){
+      $owner = $_COOKIE[$cookie_name];
+    }
+    echo "**** $student_id $name $room_preference $class";
+    mysqli_stmt_execute($resSelect);
+    $resSelect -> bind_result($resSelect); // not used 
+
+    mysqli_stmt_close($resSelect);
+  }
+
+?>
 
 
 <html lang="en">
@@ -15,9 +41,9 @@
 
 <title>Wohlford Hall</title>
 
-<h2 style="margin-top: 5px;">Wohlford Hall </h2>
+<h2>Wohlford Hall </h2>
 	<legend for="roomID">Room Number:
-	    <select required>
+	    <select name = "roomID" required>
 	    	<optgroup label="First Floor">
 		        <option value="101">101 (D)</option>
 		        <option value="102">102 (D)</option>
@@ -28,13 +54,6 @@
 		        <option value="107">107 (D)</option>
 		        <option value="108">108 (D)</option>
 		        <option value="109">109 (D)</option>
-		        <option value="110">110 (D)</option>
-		        <option value="111">111 (D)</option>
-		        <option value="112">112 (D)</option>
-		        <option value="113">113 (D)</option>
-		        <option value="114">114 (D)</option>
-		        <option value="115">115 (D)</option>
-		        <option value="116">116 (D)</option>
 		    </optgroup>
 		    <optgroup label="Second Floor">
 		        <option value="201">201 (D)</option>
@@ -62,18 +81,8 @@
   </legend> 
 
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 
-
-<input type ='Submit' value = 'Submit' name = 'Submit'> </input>
-<br/>
-<br/>
-
+<input type ='submit' value = 'Submit' name = 'Submit'> </input>
       <!-- <table>
         <tr>
           <td><a id="00" onclick="" > </a> </td>

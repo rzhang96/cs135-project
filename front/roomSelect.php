@@ -35,7 +35,6 @@
 <center>
   <h1>Pick Your Room!</h1>
 </center>
-<hr>
 <section class="container">
   <div id = "menu" class = "one">
     <ul>
@@ -50,10 +49,9 @@
       <li><a href="#appleby" id = "appleby">Appleby Hall</a></li>
       <li><a href="#boswell" id = "boswell">Boswell Hall</a></li>
       <li><a href="#green" id = "green">Green Hall</a></li>
-      <li><a style= "border-bottom: 0;" href="#wohlford" id = "wohlford">Wohlford Hall</a></li>
+      <li><a href="#wohlford" id = "wohlford">Wohlford Hall</a></li>
     </ul> 
   </div>
-
   <div id = "two" class = "two">
     Click a dorm on the left side to start!
   </div>
