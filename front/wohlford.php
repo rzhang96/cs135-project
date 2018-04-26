@@ -1,5 +1,43 @@
-<!-- <!DOCTYPE html> -->
+<?php
+  require('../backend/dbconn.php');
+  $conn = connect_to_db("DRAW");
+  require('../backend/queries.php');
+  session_start();
+  $cookie_name = "id";
+  print_r($_SESSION);
+    print_r($_COOKIE);
+?>
 
+<!DOCTYPE html>
+<?php
+   if (isset($_POST["Submit"])){
+    $room_id = $_POST["room_id"];
+    $building_id = 01;
+    $time_stamp = time();
+    
+    if (!isset($_SESSION[$cookie_name])){
+      echo "Cookie named " . $cookie_name . " is not set";
+    } else{
+      $owner = $_SESSION[$cookie_name];
+    }
+
+    mysqli_stmt_execute($resSelect);
+    $resSelect -> bind_result($resID);
+    
+    if($resSelect -> fetch()){
+      echo "You have already made a reservation.";
+    } else{
+      mysqli_stmt_execute($resInsert);
+      print_r($conn->error);
+      echo "Thanks for choosing your room! ". $room_id . "<br>";
+
+    }
+    mysqli_stmt_close($resSelect);
+    mysqli_stmt_close($resInsert);
+  }
+  //session_unset();
+  //session_destroy();
+?>
 
 <html lang="en">
 
@@ -16,19 +54,20 @@
 <title>Wohlford Hall</title>
 
 <h2>Wohlford Hall </h2>
-	<legend for="roomID">Room Number:
-	    <select required>
+	<form name="roomSelect"  method="post">
+  <legend for="roomID">Room Number:
+	    <select name="room_id" required>
 	    	<optgroup label="First Floor">
-		        <option value="101">101 (D)</option>
-		        <option value="102">102 (D)</option>
-		        <option value="103">103 (D)</option>
-		        <option value="104">104 (D)</option>
-		        <option value="105">105 (D)</option>
-		        <option value="106">106 (D)</option>
-		        <option value="107">107 (D)</option>
-		        <option value="108">108 (D)</option>
-		        <option value="109">109 (D)</option>
-		    </optgroup>
+		        <option value="01">01</option>
+		        <option value="02">02</option>
+		        <option value="03">03</option>
+		        <option value="04">04</option>
+		        <option value="05">05</option>
+		        <option value="06">06</option>
+		        <option value="07">07</option>
+		        <option value="08">08</option>
+		        <option value="09">09</option>
+		    </optgroup><!-- 
 		    <optgroup label="Second Floor">
 		        <option value="201">201 (D)</option>
 		        <option value="202">202 (D)</option>
@@ -50,13 +89,14 @@
 		        <option value="218">218 (D)</option>
 		        <option value="219">219 (D)</option>
 		        <option value="220">220 (D)</option>
-		    </optgroup>
+		    </optgroup> -->
 	    </select> 
   </legend> 
 
 
 
 <input type ='Submit' value = 'Submit' name = 'Submit'> </input>
+</form>
       <!-- <table>
         <tr>
           <td><a id="00" onclick="" > </a> </td>
