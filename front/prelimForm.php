@@ -15,6 +15,7 @@ session_start();
     $room_preference = $_POST["room_Type"];
     $class = $_POST["classYear"];
 
+
     mysqli_stmt_execute($resMade);
     $resMade->bind_result($uID);
     if($resMade -> fetch()){
@@ -23,6 +24,13 @@ session_start();
     }
 
     // echo "**** $student_id $name $room_preference $class";
+
+    $cookie_name = "user";
+    $cookie_value = $student_id;
+    setcookie($cookie_name, $cookie_value);
+
+    echo "**** $student_id $name $room_preference $class";
+
     mysqli_stmt_execute($uSelect);
     $uSelect -> bind_result($uName); // not used 
     if($uSelect -> fetch()){
@@ -67,7 +75,9 @@ session_start();
 <h2> Room Draw Preliminary Information</h2>
 
 <fieldset>
+
 <form name="frmRegister" method="post" action="roomSelect.php">
+
 
   <legend for="studentID">Student ID Number:
   <input type="text" name="studentID" id ="studentID" value="" onblur = "studentIDVal()" required> </legend>
@@ -94,8 +104,16 @@ session_start();
   <legend for="roommateID">Roommate's ID Number (If Applicable):
   <input type="number" name="roommateID" id ="roommateID" value="" onblur = "studentIDVal()" required> </legend>
 
+  <input type='submit' value= 'Submit' name= 'Submit'> 
 
-  <input type='submit' value= 'Submit' name= 'Submit' > 
+</form>
+  <script type = "text/javascript">
+     $(document).ready(function(){
+        $("#roomSelect").click(function() {
+          $("body").load("roomSelect.html");
+        });
+     });
+  </script>
 
 </body>
 </html>
