@@ -1,5 +1,49 @@
+<?php
+require('../backend/dbconn.php');
+$conn = connect_to_db("DRAW");
+require('../backend/queries.php');
+session_start();
+?>
+
 <!DOCTYPE html>
 
+
+
+<?php
+
+  if (isset($_POST["Submit"])){
+    $student_id = $_POST["studentID"];
+    $name = $_POST["name"];
+    $room_preference = $_POST["room_Type"];
+    $class = $_POST["classYear"];
+
+    echo "**** $student_id $name $room_preference $class";
+    mysqli_stmt_execute($uSelect);
+    $uSelect -> bind_result($uName); // not used 
+    if($uSelect -> fetch()){
+// checks to see if the user is has already been created
+      echo "Welcome back! ".$name ."<br>";
+    }else{
+     
+      $timeslot = mt_rand(9,15).":".str_pad(mt_rand(0,59), 2, "0", STR_PAD_LEFT);
+      echo "Timeslot: $timeslot";
+      mysqli_stmt_execute($uInsert);
+      print_r($conn->error);
+      echo "Thanks for registering! ". $name . "<br>";
+
+    }
+
+      $cookie_name = "id";
+      $cookie_value = $student_id;
+      setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+
+    $_SESSION[$cookie_name] = $cookie_value;
+    print_r($_SESSION);  
+    mysqli_stmt_close($uSelect);
+    mysqli_stmt_close($uInsert);
+  }
+
+?>
 
 <html lang="en">
 
@@ -49,7 +93,7 @@
       <li><a href="#appleby" id = "appleby">Appleby Hall</a></li>
       <li><a href="#boswell" id = "boswell">Boswell Hall</a></li>
       <li><a href="#green" id = "green">Green Hall</a></li>
-      <li><a href="#wohlford" id = "wohlford">Wohlford Hall</a></li>
+      <li><a href="wohlford.php" id = "wohlford">Wohlford Hall</a></li>
     </ul> 
   </div>
   <div id = "two" class = "two">
