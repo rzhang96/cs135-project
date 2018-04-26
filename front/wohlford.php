@@ -16,8 +16,9 @@
 <title>Wohlford Hall</title>
 
 <h2 style="margin-top: 5px;">Wohlford Hall </h2>
+<form name = "room" method = "post" action="prelimForm.php">
 	<legend for="roomID">Room Number:
-	    <select required>
+	    <select name = "roomNumber" required>
 	    	<optgroup label="First Floor">
 		        <option value="101">101 (D)</option>
 		        <option value="102">102 (D)</option>
@@ -60,7 +61,7 @@
 		    </optgroup>
 	    </select> 
   </legend> 
-
+</form>
 
 <br/>
 <br/>

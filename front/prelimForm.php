@@ -84,9 +84,7 @@ session_start();
   <legend for="roommateID">Roommate's ID Number (If Applicable):
   <input type="number" name="roommateID" id ="roommateID" value="" onblur = "studentIDVal()" required> </legend>
 
-  <a href ='roomSelect.html'>
-    <input type='submit' value= 'Submit' name= 'Submit'> 
-  </a>
+  <input type='submit' value= 'Submit' name= 'Submit'> 
 
 </form>
   <script type = "text/javascript">
