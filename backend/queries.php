@@ -33,5 +33,15 @@
 		print_r($conn->error);
 	}
 
+	$query = "SELECT owner from Reservation where owner = ?";
+	$resMade = $conn -> prepare($query);
+	if ($resMade){
+		$resMade->bind_param("i", $student_id);
+	}else{
+		print_r($conn->error);
+	}
+	// SELECT room_id from room  where building_id = "xxx" and not in
+	// (SELECT   room_id from Reservation)
+
 
 ?>
