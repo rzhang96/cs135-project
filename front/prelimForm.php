@@ -15,6 +15,10 @@ session_start();
     $room_preference = $_POST["room_Type"];
     $class = $_POST["classYear"];
 
+    $cookie_name = "user";
+    $cookie_value = $student_id;
+    setcookie($cookie_name, $cookie_value);
+
     echo "**** $student_id $name $room_preference $class";
     mysqli_stmt_execute($uSelect);
     $uSelect -> bind_result($uName); // not used 
@@ -60,7 +64,11 @@ session_start();
 <h2> Room Draw Preliminary Information</h2>
 
 <fieldset>
+<<<<<<< HEAD
 <form name="frmRegister" method="post" action="roomSelect.php">
+=======
+<form name="frmRegister" method="post" action = "roomSelect.php">
+>>>>>>> 201ef8c57df0161460cdd9cf3f0f7dba64ce9c6f
 
   <legend for="studentID">Student ID Number:
   <input type="text" name="studentID" id ="studentID" value="" onblur = "studentIDVal()" required> </legend>
@@ -87,8 +95,16 @@ session_start();
   <legend for="roommateID">Roommate's ID Number (If Applicable):
   <input type="number" name="roommateID" id ="roommateID" value="" onblur = "studentIDVal()" required> </legend>
 
+  <input type='submit' value= 'Submit' name= 'Submit'> 
 
-  <input type='submit' value= 'Submit' name= 'Submit' > 
+</form>
+  <script type = "text/javascript">
+     $(document).ready(function(){
+        $("#roomSelect").click(function() {
+          $("body").load("roomSelect.html");
+        });
+     });
+  </script>
 
 </body>
 </html>

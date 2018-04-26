@@ -1,43 +1,31 @@
 <?php
-  require('../backend/dbconn.php');
-  $conn = connect_to_db("DRAW");
-  require('../backend/queries.php');
-  session_start();
-  $cookie_name = "id";
-  print_r($_SESSION);
-    print_r($_COOKIE);
+require('../backend/dbconn.php');
+$conn = connect_to_db("DRAW");
+require('../backend/queries.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
+
+ $room_id, $owner, $building_id, $time_stamp
 <?php
-   if (isset($_POST["Submit"])){
-    $room_id = $_POST["room_id"];
-    $building_id = 01;
-    $time_stamp = time();
-    
-    if (!isset($_SESSION[$cookie_name])){
-      echo "Cookie named " . $cookie_name . " is not set";
-    } else{
-      $owner = $_SESSION[$cookie_name];
-    }
 
+  if (isset($_POST["Submit"])){
+    $room_id = $_POST["roomID"];
+    $building_id = $_POST["01"];
+
+    if (!isset($_COOKIE[$cookie_name])){
+      $owner = $_COOKIE[$cookie_name];
+    }
+    echo "**** $student_id $name $room_preference $class";
     mysqli_stmt_execute($resSelect);
-    $resSelect -> bind_result($resID);
-    
-    if($resSelect -> fetch()){
-      echo "You have already made a reservation.";
-    } else{
-      mysqli_stmt_execute($resInsert);
-      print_r($conn->error);
-      echo "Thanks for choosing your room! ". $room_id . "<br>";
+    $resSelect -> bind_result($resSelect); // not used 
 
-    }
     mysqli_stmt_close($resSelect);
-    mysqli_stmt_close($resInsert);
   }
-  //session_unset();
-  //session_destroy();
+
 ?>
+
 
 <html lang="en">
 
@@ -53,27 +41,9 @@
 
 <title>Wohlford Hall</title>
 
-<<<<<<< HEAD:front/wohlford.php
 <h2>Wohlford Hall </h2>
-	<form name="roomSelect"  method="post">
-  <legend for="roomID">Room Number:
-	    <select name="room_id" required>
-	    	<optgroup label="First Floor">
-		        <option value="01">01</option>
-		        <option value="02">02</option>
-		        <option value="03">03</option>
-		        <option value="04">04</option>
-		        <option value="05">05</option>
-		        <option value="06">06</option>
-		        <option value="07">07</option>
-		        <option value="08">08</option>
-		        <option value="09">09</option>
-		    </optgroup><!-- 
-=======
-<h2 style="margin-top: 5px;">Wohlford Hall </h2>
-<form name = "room" method = "post" action="prelimForm.php">
 	<legend for="roomID">Room Number:
-	    <select name = "roomNumber" required>
+	    <select name = "roomID" required>
 	    	<optgroup label="First Floor">
 		        <option value="101">101 (D)</option>
 		        <option value="102">102 (D)</option>
@@ -84,15 +54,7 @@
 		        <option value="107">107 (D)</option>
 		        <option value="108">108 (D)</option>
 		        <option value="109">109 (D)</option>
-		        <option value="110">110 (D)</option>
-		        <option value="111">111 (D)</option>
-		        <option value="112">112 (D)</option>
-		        <option value="113">113 (D)</option>
-		        <option value="114">114 (D)</option>
-		        <option value="115">115 (D)</option>
-		        <option value="116">116 (D)</option>
 		    </optgroup>
->>>>>>> 201ef8c57df0161460cdd9cf3f0f7dba64ce9c6f:front/wohlford.php
 		    <optgroup label="Second Floor">
 		        <option value="201">201 (D)</option>
 		        <option value="202">202 (D)</option>
@@ -114,27 +76,13 @@
 		        <option value="218">218 (D)</option>
 		        <option value="219">219 (D)</option>
 		        <option value="220">220 (D)</option>
-		    </optgroup> -->
+		    </optgroup>
 	    </select> 
   </legend> 
-</form>
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 
 
-<input type ='Submit' value = 'Submit' name = 'Submit'> </input>
-<<<<<<< HEAD:front/wohlford.php
-</form>
-=======
-<br/>
-<br/>
 
->>>>>>> 201ef8c57df0161460cdd9cf3f0f7dba64ce9c6f:front/wohlford.php
+<input type ='submit' value = 'Submit' name = 'Submit'> </input>
       <!-- <table>
         <tr>
           <td><a id="00" onclick="" > </a> </td>
