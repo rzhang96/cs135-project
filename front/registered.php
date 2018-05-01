@@ -4,8 +4,8 @@
   require('../backend/queries.php');
   session_start();
   $cookie_name = "id";
-  print_r($_SESSION);
-  print_r($_COOKIE);
+  // print_r($_SESSION);
+  // print_r($_COOKIE);
 ?>
 
 <!DOCTYPE html>
