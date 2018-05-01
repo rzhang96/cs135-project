@@ -40,8 +40,6 @@
 	}else{
 		print_r($conn->error);
 	}
-	// SELECT room_id from room  where building_id = "xxx" and not in
-	// (SELECT   room_id from Reservation)
 
 
 ?>

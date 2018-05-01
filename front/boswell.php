@@ -5,7 +5,7 @@
   session_start();
   $cookie_name = "id";
   // print_r($_SESSION);
-    // print_r($_COOKIE);
+  //   print_r($_COOKIE);
 ?>
 
 <!DOCTYPE html>
@@ -22,15 +22,15 @@
   <link rel="stylesheet" type="text/css" href="room.css">
 
 
-<title>Wohlford Hall</title>
+<title>Boswell Hall</title>
 
-<h2>Wohlford Hall </h2>
+<h2>Boswell Hall </h2>
 	<form name="roomSelect"  method="post" action = "registered.php">
     
   <legend for="roomID">Room Number:
 	    <select name="room_id" required>
         <?php 
-            $sql = mysqli_query($conn, "SELECT room_id from Room r where r.room_id NOT IN (SELECT room_id from Reservation res where res.building_id = 01) AND r.building_id = 01");
+            $sql = mysqli_query($conn, "SELECT room_id from Room r where r.room_id NOT IN (SELECT room_id from Reservation res where res.building_id = 03) AND r.building_id = 03");
             while ($row = $sql -> fetch_assoc()){
                 echo "<option value =". $row['room_id']. ">".$row['room_id']. "</option>";  
             }

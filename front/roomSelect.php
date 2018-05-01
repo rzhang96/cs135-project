@@ -28,7 +28,7 @@ session_start();
       $timeslot = mt_rand(9,15).":".str_pad(mt_rand(0,59), 2, "0", STR_PAD_LEFT);
       // echo "Timeslot: $timeslot";
       mysqli_stmt_execute($uInsert);
-      print_r($conn->error);
+      // print_r($conn->error);
       echo "Thanks for registering! ". $name . "<br>";
 
     }
@@ -56,13 +56,23 @@ session_start();
   <link rel="stylesheet" type="text/css" href="roomSelect.css">
   <script type="text/javascript">
       $(document).ready(function(){
-           $("#auen").click(function(){
-               $("#two").load("auen.html");
+           $("#green").click(function(){
+               $("#two").load("green.php");
+           });
+      });
+      $(document).ready(function(){
+           $("#boswell").click(function(){
+               $("#two").load("boswell.php");
+           });
+      });
+      $(document).ready(function(){
+           $("#appleby").click(function(){
+               $("#two").load("appleby.php");
            });
       });
       $(document).ready(function(){
            $("#wohlford").click(function(){
-               $("#two").load("wohlford.html");
+               $("#two").load("wohlford.php");
            });
       });
   </script>
@@ -93,7 +103,7 @@ session_start();
       <li><a href="#appleby" id = "appleby">Appleby Hall</a></li>
       <li><a href="#boswell" id = "boswell">Boswell Hall</a></li>
       <li><a href="#green" id = "green">Green Hall</a></li>
-      <li><a href="wohlford.php" id = "wohlford">Wohlford Hall</a></li>
+      <li><a href="#wohlford" id = "wohlford">Wohlford Hall</a></li>
     </ul> 
   </div>
   <div id = "two" class = "two">
