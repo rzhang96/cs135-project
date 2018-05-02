@@ -33,5 +33,13 @@
 		print_r($conn->error);
 	}
 
+	$query = "SELECT owner from Reservation where owner = ?";
+	$resMade = $conn -> prepare($query);
+	if ($resMade){
+		$resMade->bind_param("i", $student_id);
+	}else{
+		print_r($conn->error);
+	}
+
 
 ?>

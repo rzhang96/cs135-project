@@ -1,5 +1,49 @@
+<?php
+require('../backend/dbconn.php');
+$conn = connect_to_db("DRAW");
+require('../backend/queries.php');
+session_start();
+?>
+
 <!DOCTYPE html>
 
+
+
+<?php
+
+  if (isset($_POST["Submit"])){
+    $student_id = $_POST["studentID"];
+    $name = $_POST["name"];
+    $room_preference = $_POST["room_Type"];
+    $class = $_POST["classYear"];
+
+    // echo "**** $student_id $name $room_preference $class";
+    mysqli_stmt_execute($uSelect);
+    $uSelect -> bind_result($uName); // not used 
+    if($uSelect -> fetch()){
+// checks to see if the user is has already been created
+      echo "Welcome back! ".$name ."<br>";
+    }else{
+     
+      $timeslot = mt_rand(9,15).":".str_pad(mt_rand(0,59), 2, "0", STR_PAD_LEFT);
+      // echo "Timeslot: $timeslot";
+      mysqli_stmt_execute($uInsert);
+      // print_r($conn->error);
+      echo "Thanks for registering! ". $name . "<br>";
+
+    }
+
+      $cookie_name = "id";
+      $cookie_value = $student_id;
+      setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+
+    $_SESSION[$cookie_name] = $cookie_value;
+    // print_r($_SESSION);  
+    mysqli_stmt_close($uSelect);
+    mysqli_stmt_close($uInsert);
+  }
+
+?>
 
 <html lang="en">
 
@@ -12,13 +56,23 @@
   <link rel="stylesheet" type="text/css" href="roomSelect.css">
   <script type="text/javascript">
       $(document).ready(function(){
-           $("#auen").click(function(){
-               $("#two").load("auen.html");
+           $("#green").click(function(){
+               $("#two").load("green.php");
+           });
+      });
+      $(document).ready(function(){
+           $("#boswell").click(function(){
+               $("#two").load("boswell.php");
+           });
+      });
+      $(document).ready(function(){
+           $("#appleby").click(function(){
+               $("#two").load("appleby.php");
            });
       });
       $(document).ready(function(){
            $("#wohlford").click(function(){
-               $("#two").load("wohlford.html");
+               $("#two").load("wohlford.php");
            });
       });
   </script>

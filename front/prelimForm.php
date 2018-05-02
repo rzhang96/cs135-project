@@ -15,13 +15,24 @@ session_start();
     $room_preference = $_POST["room_Type"];
     $class = $_POST["classYear"];
 
-    echo "**** $student_id $name $room_preference $class";
+    mysqli_stmt_execute($resMade);
+    $resMade->bind_result($uID);
+    if($resMade -> fetch()){
+      header("Location: registered.php");
+      print_r($conn -> error);
+    }
+
+    // echo "**** $student_id $name $room_preference $class";
     mysqli_stmt_execute($uSelect);
     $uSelect -> bind_result($uName); // not used 
     if($uSelect -> fetch()){
 // checks to see if the user is has already been created
       echo "Welcome back! ".$name ."<br>";
     }else{
+      $cookie_name = "id";
+      $cookie_value = $student_id;
+      setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+
       $timeslot = mt_rand(9,15).":".str_pad(mt_rand(0,59), 2, "0", STR_PAD_LEFT);
       echo "Timeslot: $timeslot";
       mysqli_stmt_execute($uInsert);
@@ -29,6 +40,9 @@ session_start();
       echo "Thanks for registering! ". $name . "<br>";
 
     }
+
+    $_SESSION[$cookie_name] = $cookie_value;
+    print_r($_SESSION);  
     mysqli_stmt_close($uSelect);
     mysqli_stmt_close($uInsert);
   }
@@ -53,7 +67,7 @@ session_start();
 <h2> Room Draw Preliminary Information</h2>
 
 <fieldset>
-<form name="frmRegister" method="post">
+<form name="frmRegister" method="post" action="roomSelect.php">
 
   <legend for="studentID">Student ID Number:
   <input type="text" name="studentID" id ="studentID" value="" onblur = "studentIDVal()" required> </legend>
