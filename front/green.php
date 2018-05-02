@@ -1,5 +1,14 @@
-<!-- <!DOCTYPE html> -->
+<?php
+  require('../backend/dbconn.php');
+  $conn = connect_to_db("DRAW");
+  require('../backend/queries.php');
+  session_start();
+  $cookie_name = "id";
+  // print_r($_SESSION);
+  //   print_r($_COOKIE);
+?>
 
+<!DOCTYPE html>
 
 <html lang="en">
 
@@ -13,21 +22,29 @@
   <link rel="stylesheet" type="text/css" href="room.css">
 
 
-<title>Wohlford Hall</title>
+<title>Green Hall</title>
 
-<h2>Wohlford Hall </h2>
-	<legend for="roomID">Room Number:
-	    <select required>
-	    	<optgroup label="First Floor">
-		        <option value="101">101 (D)</option>
-		        <option value="102">102 (D)</option>
-		        <option value="103">103 (D)</option>
-		        <option value="104">104 (D)</option>
-		        <option value="105">105 (D)</option>
-		        <option value="106">106 (D)</option>
-		        <option value="107">107 (D)</option>
-		        <option value="108">108 (D)</option>
-		        <option value="109">109 (D)</option>
+<h2>Green Hall </h2>
+	<form name="roomSelect"  method="post" action = "registered.php">
+    
+  <legend for="roomID">Room Number:
+	    <select name="room_id" required>
+        <?php 
+            $sql = mysqli_query($conn, "SELECT room_id from Room r where r.room_id NOT IN (SELECT room_id from Reservation res where res.building_id = 02) AND r.building_id = 02");
+            while ($row = $sql -> fetch_assoc()){
+                echo "<option value =". $row['room_id']. ">".$row['room_id']. "</option>";  
+            }
+           ?>
+	    	<!-- <optgroup label="First Floor"> -->
+<!-- 		        <option value="01">01</option>
+		        <option value="02">02</option>
+		        <option value="03">03</option>
+		        <option value="04">04</option>
+		        <option value="05">05</option>
+		        <option value="06">06</option>
+		        <option value="07">07</option>
+		        <option value="08">08</option>
+		        <option value="09">09</option>
 		    </optgroup>
 		    <optgroup label="Second Floor">
 		        <option value="201">201 (D)</option>
@@ -50,13 +67,14 @@
 		        <option value="218">218 (D)</option>
 		        <option value="219">219 (D)</option>
 		        <option value="220">220 (D)</option>
-		    </optgroup>
+		    </optgroup> -->
 	    </select> 
   </legend> 
 
 
 
 <input type ='Submit' value = 'Submit' name = 'Submit'> </input>
+</form>
       <!-- <table>
         <tr>
           <td><a id="00" onclick="" > </a> </td>
