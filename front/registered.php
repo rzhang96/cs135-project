@@ -18,7 +18,11 @@
     $time_stamp = time();
     
     if (!isset($_SESSION[$cookie_name])){
+<<<<<<< HEAD
       // echo "Cookie named " . $cookie_name . " is not set";
+=======
+      echo "Cookie named " . $cookie_name . " is not set";
+>>>>>>> aff918e1066e6c5ec0cfdefbd9d4c76ba1269544
     } else{
       $owner = $_SESSION[$cookie_name];
     }
@@ -30,8 +34,13 @@
       echo "You have already made a reservation.";
     } else{
       mysqli_stmt_execute($resInsert);
+<<<<<<< HEAD
       // print_r($conn->error);
       // echo "Thanks for choosing your room! ". "<br>";
+=======
+      print_r($conn->error);
+      echo "Thanks for choosing your room! ". $room_id . "<br>";
+>>>>>>> aff918e1066e6c5ec0cfdefbd9d4c76ba1269544
 
     }
     mysqli_stmt_close($resSelect);
